@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>slide</title>
+    <link rel="icon" type="image" href="46x46.gif">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .contaner {
+            background-color: rgb(213, 131, 131);
+            width: auto;
+            border: 1px solid black;
+        }
+
+        .header {
+            background-color: aqua;
+            width: auto;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .nav {
+            background-color: rgb(91, 94, 97);
+            margin: 10px;
+            padding: 1px 0 1px 0;
+            /* font-size: 1em; */
+        }
+
+        ul li {
+            display: inline-block;
+        }
+
+        a {
+            background-color: black;
+            color: azure;
+            /* border: 1px solid; */
+            text-decoration: none;
+            /* height: auto; */
+            font-size: large;
+        }
+
+        .row {
+            background-color: antiquewhite;
+            display: flex;
+            /* flex-wrap: wrap; */
+            /* width: 100%; */
+        }
+
+        .col-1 {
+            background-color: azure;
+            flex: 20%;
+            margin: 10PX;
+            /* flex-wrap: wrap; */
+        }
+
+        .col-2 {
+            background-color: rgb(101, 128, 227);
+            flex: 80%;
+            margin: 10PX;
+            height: 300px;
+        }
+        .col-3 {
+            text-align: center;
+        }
+
+        .col-4 {
+            display: none;
+            height: 80%;
+        }
+
+        /* .text {
+            text-align: center;
+             bottom: 10px; 
+          } */
+
+        .dot {
+            background-color: rgb(175, 138, 138);
+            border-radius: 50%;
+            cursor: pointer;
+            margin: 0 20px 0 20px;
+            padding: 1px 10px 1px 10px;
+            width: auto;
+        }
+
+        .active,
+        .dot:hover {
+            opacity: 0.5;
+        }
+
+        .footer {
+            background-color: black;
+            color: aliceblue;
+            height: 100px;
+            text-align: center;
+            margin: 10px;
+            padding: 20px;
+        }
+
+        @media screen and (max-width: 700px) {
+            .row {
+                flex-direction: column;
+            }
+        }
+    </style>
+
+<body>
+    <div class="contaner">
+        <div class="header">
+            <h1>
+                Welcome to Quntum world
+            </h1>
+
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="#">home</a></li>
+                <li><a href="#">about</a></li>
+                <li><a href="#">career</a></li>
+                <li><a href="#">contact</a></li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-1">
+                <h2>Lorem</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi ipsum inventore temporibus? Labore
+                    minus harum inventore. Nostrum, tempore laborum. Pariatur adipisci autem id eos</p>
+            </div>
+            <div class="col-2">
+                <div class="col-4">
+                    <!-- <img src="46x46.gif" width="80%" height="80%"> -->
+                    <!-- <div class="text">caption</div> -->
+                </div>
+                <div class="col-4">
+                    <!-- <img src="60x60.gif" width="80%" height="80%"> -->
+                    <!-- <div class="text">caption2</div> -->
+                </div>
+                <div class="col-4">
+                    <!-- <img src="80x80.gif" width="80%" height="80%"> -->
+                    <!-- <div class="text">caption3</div> -->
+                </div>
+                <!-- <a class="prev" onclick="plusSlides(-1)">❮</a> -->
+                <!-- <a class="next" onclick="plusSlides(1)">❯</a> -->
+
+
+                <div class="col-3">
+                    <span class="dot" onclick="currentSlide (1) ">1</span>
+                    <span class="dot" onclick="currentSlide (2) ">2</span>
+                    <span class="dot" onclick="currentSlide (3) ">3</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h2>End of Document</h2>
+        </div>
+    </div>
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("col-4");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
+
+</body>
+</head>
+
+</html>
